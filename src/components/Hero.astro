@@ -1,0 +1,57 @@
+---
+import { courses } from '../data/courses';
+---
+
+<section class="hero" aria-label="Destaques da Pós-Graduação Fanese">
+  <div class="hero-slides">
+    {courses.map((course, index) => (
+      <article
+        class:list={['hero-slide', `hero-slide--${course.accent}`, { 'is-active': index === 0 }]}
+        data-slide={index}
+        aria-hidden={index === 0 ? 'false' : 'true'}
+      >
+        <img
+          class="hero-slide-background"
+          src={course.heroImage}
+          alt=""
+          width="1920"
+          height="1080"
+          draggable="false"
+          loading={index === 0 ? 'eager' : 'lazy'}
+        />
+        <div class="hero-overlay" aria-hidden="true"></div>
+
+        <div class="container hero-content">
+          <div class="hero-copy">
+            <span class="eyebrow">{course.eyebrow}</span>
+            <h1>{course.name}</h1>
+            <p>{course.description}</p>
+            <div class="hero-actions">
+              <a class="button button--gold" href={`/cursos/${course.slug}/`}>Conheça o curso</a>
+              <a class="button button--outline-light" href="#cursos">Ver todas as formações</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="container hero-footer">
+          <div class="hero-facts" aria-label="Informações dos cursos">
+            <div><span>Carga horária</span><strong>360 horas</strong></div>
+            <div><span>Modalidade</span><strong>Presencial</strong></div>
+            <div><span>Início previsto</span><strong>13 nov. 2026</strong></div>
+            <div><span>Organização</span><strong>30 módulos</strong></div>
+          </div>
+          <div class="hero-controls" aria-label="Controles do banner">
+            {courses.map((item, dotIndex) => (
+              <button
+                class:list={['hero-dot', { 'is-active': dotIndex === index }]}
+                type="button"
+                data-slide-to={dotIndex}
+                aria-label={`Exibir ${item.shortName}`}
+              ></button>
+            ))}
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>

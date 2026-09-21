@@ -1,0 +1,345 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { courses } from '../../data/courses';
+
+export function getStaticPaths() {
+  return courses.map((course) => ({
+    params: { slug: course.slug },
+    props: { course },
+  }));
+}
+
+const { course } = Astro.props;
+
+const differentials = Array.isArray(course.differentials)
+  ? course.differentials
+  : [];
+
+const audienceProfiles = Array.isArray(course.audienceProfiles)
+  ? course.audienceProfiles
+  : [];
+
+const professors = Array.isArray(course.professors)
+  ? course.professors
+  : [];
+
+const investment = {
+  label: 'Condições especiais de lançamento',
+  value: 'Consulte nossa equipe',
+  installment: 'Opções de parcelamento disponíveis',
+  note: 'Receba os valores atualizados, descontos vigentes e todas as formas de pagamento.',
+  ...(course.investment ?? {}),
+};
+
+const whatsappMessage = encodeURIComponent(
+  `Olá! Gostaria de receber mais informações sobre inscrição e investimento no curso ${course.name}.`,
+);
+
+const enrollmentUrl =
+  `https://api.whatsapp.com/send?phone=5579935002390&text=${whatsappMessage}`;
+---
+
+<BaseLayout
+  title={`${course.name} | Fanese`}
+  description={course.description}
+>
+  <Header dark />
+
+  <main class="course-page">
+    <section
+      class:list={[
+        'course-hero',
+        `course-hero--${course.accent}`,
+      ]}
+    >
+      <div class="container course-hero-grid">
+        <div>
+          <span class="eyebrow">{course.eyebrow}</span>
+
+          <h1>{course.name}</h1>
+
+          <p>{course.description}</p>
+
+          <a
+            class="button button--gold"
+            href="tel:+557931420970"
+          >
+            Quero saber mais
+          </a>
+        </div>
+
+        <div class="course-hero-image">
+          <img
+            src={course.image}
+            alt=""
+            width="720"
+            height="560"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="course-quick-info">
+      <div class="container">
+        <div>
+          <span>Modalidade</span>
+          <strong>{course.modality}</strong>
+        </div>
+
+        <div>
+          <span>Carga horária</span>
+          <strong>{course.workload}</strong>
+        </div>
+
+        <div>
+          <span>Organização</span>
+          <strong>{course.modules}</strong>
+        </div>
+
+        <div>
+          <span>Início previsto</span>
+          <strong>{course.start}</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="section course-intro">
+      <div class="container">
+        <div class="course-intro-grid">
+          <div>
+            <span class="eyebrow eyebrow--dark">
+              Sobre o curso
+            </span>
+
+            <h2>
+              Uma formação conectada aos desafios da sua área
+            </h2>
+
+            <p>{course.description}</p>
+          </div>
+
+          <div>
+            <h2>Diferenciais</h2>
+
+            <ul class="check-list check-list--dark">
+              {differentials.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div class="course-details-heading">
+          <span class="eyebrow eyebrow--dark">
+            Formação em detalhes
+          </span>
+
+          <h2>
+            Para quem é o curso e qual é o seu objetivo
+          </h2>
+        </div>
+
+        <div class="course-details-grid">
+          <article class="course-detail-card">
+            <span class="course-detail-label">01</span>
+
+            <h3>Público-alvo</h3>
+
+            <p>
+              {course.audience || course.description}
+            </p>
+
+            {audienceProfiles.length > 0 && (
+              <ul class="course-detail-list">
+                {audienceProfiles.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            )}
+          </article>
+
+          <article
+            class="course-detail-card course-detail-card--featured"
+          >
+            <span class="course-detail-label">02</span>
+
+            <h3>Objetivo geral</h3>
+
+            <p>
+              {course.generalObjective || course.description}
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="professores"
+      class="section course-professors"
+    >
+      <div class="container">
+        <div class="course-section-heading">
+          <div>
+            <span class="eyebrow eyebrow--dark">
+              Experiência que aproxima teoria e prática
+            </span>
+
+            <h2>Professores do curso</h2>
+          </div>
+
+          <p>
+            Conheça os profissionais que conduzirão os
+            encontros e compartilharão experiências aplicadas
+            à sua área.
+          </p>
+        </div>
+
+        {professors.length > 0 ? (
+          <div class="professor-grid">
+            {professors.map((professor) => (
+              <article class="professor-card">
+                <div class="professor-card-image">
+                  <img
+                    src={professor.image}
+                    alt={`Professor(a) ${professor.name}`}
+                    width="560"
+                    height="680"
+                    loading="lazy"
+                  />
+                </div>
+
+                <div class="professor-card-body">
+                  <p>{professor.role}</p>
+
+                  <h3>{professor.name}</h3>
+
+                  {professor.profileUrl && (
+                    <a
+                      href={professor.profileUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Conheça o perfil
+                      <span aria-hidden="true">→</span>
+                    </a>
+                  )}
+                </div>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div class="professors-announcement">
+            <div class="professors-announcement-image">
+              <img
+                src="/images/courses/docentes.jpg"
+                alt="Profissionais reunidos em ambiente de aprendizagem"
+                width="900"
+                height="700"
+                loading="lazy"
+              />
+            </div>
+
+            <div class="professors-announcement-copy">
+              <span>Divulgação em breve</span>
+
+              <h3>
+                Um corpo docente conectado ao mercado
+              </h3>
+
+              <p>
+                Os nomes, experiências e perfis dos professores
+                desta formação serão apresentados após a
+                confirmação acadêmica da turma.
+              </p>
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+
+    <section
+      id="investimento"
+      class="section course-investment"
+    >
+      <div class="container">
+        <div
+          class="course-section-heading course-section-heading--light"
+        >
+          <div>
+            <span class="eyebrow">
+              Planeje sua formação
+            </span>
+
+            <h2>Investimento</h2>
+          </div>
+
+          <p>
+            Converse com a nossa equipe para receber as
+            condições comerciais válidas para esta turma.
+          </p>
+        </div>
+
+        <div class="investment-panel">
+          <div class="investment-price">
+            <span>{investment.label}</span>
+
+            <strong>{investment.value}</strong>
+
+            <p>{investment.installment}</p>
+
+            <small>{investment.note}</small>
+          </div>
+
+          <ul
+            class="investment-facts"
+            aria-label="Informações incluídas na formação"
+          >
+            <li>
+              <span>Modalidade</span>
+              <strong>{course.modality}</strong>
+            </li>
+
+            <li>
+              <span>Carga horária</span>
+              <strong>{course.workload}</strong>
+            </li>
+
+            <li>
+              <span>Organização</span>
+              <strong>{course.modules}</strong>
+            </li>
+
+            <li>
+              <span>Trabalho de conclusão</span>
+              <strong>{course.tcc || 'Facultativo'}</strong>
+            </li>
+          </ul>
+
+          <div class="investment-cta">
+            <span>Atendimento personalizado</span>
+
+            <h3>Pronto para dar o próximo passo?</h3>
+
+            <p>
+              Solicite valores, condições de parcelamento e
+              orientações para a matrícula.
+            </p>
+
+            <a
+              class="button button--gold"
+              href={enrollmentUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Quero me inscrever
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

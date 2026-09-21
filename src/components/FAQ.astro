@@ -1,0 +1,21 @@
+---
+import { faqItems } from '../data/faq';
+---
+
+<section id="faq" class="faq-section section section--navy">
+  <div class="container faq-layout">
+    <div class="section-heading section-heading--light">
+      <span class="eyebrow">Informação para decidir com segurança</span>
+      <h2>Perguntas frequentes</h2>
+      <p>Confira as respostas para as principais dúvidas sobre a nova oferta de pós-graduação da Fanese.</p>
+    </div>
+    <div class="faq-list">
+      {faqItems.map((item, index) => (
+        <details class="faq-item" open={index === 0}>
+          <summary>{item.question}<span aria-hidden="true">+</span></summary>
+          <div><p>{item.answer}</p></div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

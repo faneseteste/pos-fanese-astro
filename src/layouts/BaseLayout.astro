@@ -1,0 +1,43 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Pós-Graduação Fanese',
+  description = 'Cursos de pós-graduação presenciais para transformar conhecimento em atuação profissional.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#07182f" />
+    <link rel="icon" type="image/png" href="/images/brand/favicon.png" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+    <a
+      class="floating-contact"
+      href="https://api.whatsapp.com/send?phone=5579935002390&amp;text=Ol%C3%A1%2C%20estava%20conferindo%20o%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20%F0%9F%98%89"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Conversar com a Pós-Graduação Fanese pelo WhatsApp"
+      title="Fale conosco pelo WhatsApp"
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M20.52 3.48A11.82 11.82 0 0 0 12.08 0C5.5 0 .15 5.35.15 11.93c0 2.1.55 4.16 1.6 5.97L.05 24l6.24-1.64a11.9 11.9 0 0 0 5.78 1.47h.01C18.66 23.83 24 18.48 24 11.9c0-3.18-1.23-6.17-3.48-8.42Zm-8.44 18.34h-.01a9.9 9.9 0 0 1-5.05-1.38l-.36-.21-3.7.97.99-3.61-.23-.37a9.87 9.87 0 0 1-1.52-5.29C2.2 6.46 6.63 2.02 12.09 2.02a9.8 9.8 0 0 1 7 2.9 9.82 9.82 0 0 1 2.9 6.99c-.01 5.46-4.45 9.91-9.91 9.91Zm5.42-7.42c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47a8.9 8.9 0 0 1-1.65-2.05c-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.21 5.09 4.5.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35Z" />
+      </svg>
+    </a>
+    <script>
+      import '../scripts/site.ts';
+    </script>
+  </body>
+</html>

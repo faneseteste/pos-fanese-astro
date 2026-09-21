@@ -1,0 +1,29 @@
+---
+interface Props {
+  dark?: boolean;
+}
+
+const { dark = false } = Astro.props;
+---
+
+<header class:list={['site-header', { 'site-header--solid': dark }]}>
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="Página inicial da Pós-Graduação Fanese">
+      <img src="/images/brand/fanese-white.png" alt="Fanese" width="180" height="40" />
+      <span>Pós-Graduação</span>
+    </a>
+
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-menu">
+      <span></span><span></span><span></span>
+      <span class="sr-only">Abrir menu</span>
+    </button>
+
+    <nav id="main-menu" class="main-nav" aria-label="Navegação principal">
+      <a href="/#cursos">Cursos</a>
+      <a href="/#diferenciais">Diferenciais</a>
+      <a href="/#faq">Perguntas frequentes</a>
+      <a class="button button--small button--outline-light" target = "_blank" href="https://api.whatsapp.com/send?phone=5579935002390&amp;text=Ol%C3%A1%2C%20estava%20conferindo%20o%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20%F0%9F%98%89">Fale conosco</a>
+      <a class="button button--small button--gold" href="/#cursos">Conheça os cursos</a>
+    </nav>
+  </div>
+</header>
