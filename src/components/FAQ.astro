@@ -4,18 +4,71 @@ import { faqItems } from '../data/faq';
 
 <section id="faq" class="faq-section section section--navy">
   <div class="container faq-layout">
+
     <div class="section-heading section-heading--light">
-      <span class="eyebrow">Informação para decidir com segurança</span>
+      <span class="eyebrow">
+        Informação para decidir com segurança
+      </span>
+
       <h2>Perguntas frequentes</h2>
-      <p>Confira as respostas para as principais dúvidas sobre a nova oferta de pós-graduação da Fanese.</p>
+
+      <p>
+        Encontre respostas para as principais dúvidas sobre a pós-graduação.
+      </p>
+
+      <button
+        class="faq-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="faq-list"
+      >
+        <span class="faq-toggle-text">Ler FAQ</span>
+        <span class="faq-toggle-icon">+</span>
+      </button>
     </div>
-    <div class="faq-list">
-      {faqItems.map((item, index) => (
-        <details class="faq-item" open={index === 0}>
-          <summary>{item.question}<span aria-hidden="true">+</span></summary>
-          <div><p>{item.answer}</p></div>
+
+    <div
+      class="faq-list"
+      id="faq-list"
+      aria-hidden="true"
+    >
+      {faqItems.map((item) => (
+        <details class="faq-item">
+          <summary>
+            {item.question}
+
+            <span>+</span>
+          </summary>
+
+          <div>
+            <p>{item.answer}</p>
+          </div>
         </details>
       ))}
     </div>
+
   </div>
 </section>
+
+<script>
+  const toggle = document.querySelector('.faq-toggle');
+  const faqList = document.querySelector('#faq-list');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+    faqList?.setAttribute('aria-hidden', String(isOpen));
+
+    const text = toggle.querySelector('.faq-toggle-text');
+    const icon = toggle.querySelector('.faq-toggle-icon');
+
+    if (text) {
+      text.textContent = isOpen ? 'Ler FAQ' : 'Ocultar FAQ';
+    }
+
+    if (icon) {
+      icon.textContent = isOpen ? '+' : '−';
+    }
+  });
+</script>

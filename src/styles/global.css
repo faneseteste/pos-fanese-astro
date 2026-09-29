@@ -1810,3 +1810,427 @@ button {
         #000 100%);
   }
 }
+
+/* =========================
+   FAQ
+========================= */
+
+.faq-section {
+  padding: 100px 0;
+  background: #080d0a;
+}
+
+.faq-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.8fr) minmax(500px, 1.2fr);
+  gap: 80px;
+  align-items: start;
+}
+
+/* =========================
+   Título
+========================= */
+
+.faq-section .section-heading {
+  position: sticky;
+  top: 100px;
+}
+
+.faq-section .eyebrow {
+  display: block;
+  margin-bottom: 18px;
+
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color: #20e878;
+}
+
+.faq-section .section-heading h2 {
+  margin: 0 0 18px;
+
+  font-size: clamp(42px, 4vw, 62px);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+
+  color: #ffffff;
+}
+
+.faq-section .section-heading p {
+  max-width: 390px;
+  margin: 0;
+
+  font-size: 16px;
+  line-height: 1.6;
+
+  color: #d4ddd8;
+}
+
+/* =========================
+   Botão Ler FAQ
+========================= */
+
+.faq-toggle {
+  margin-top: 28px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 12px 20px;
+
+  border: 1px solid rgba(32, 232, 120, 0.45);
+  border-radius: 999px;
+
+  background: rgba(32, 232, 120, 0.06);
+
+  color: #ffffff;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.faq-toggle:hover {
+  background: rgba(32, 232, 120, 0.12);
+  border-color: #20e878;
+  transform: translateY(-1px);
+}
+
+.faq-toggle-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 20px;
+  height: 20px;
+
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1;
+
+  color: #20e878;
+
+  transition: transform 0.25s ease;
+}
+
+/* =========================
+   Lista
+========================= */
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+
+  max-width: 900px;
+
+  margin-top: 0;
+
+  /* Escondida inicialmente */
+  display: none;
+}
+
+/* Lista aberta */
+
+.faq-list[aria-hidden="false"] {
+  display: flex;
+}
+
+/* =========================
+   Item
+========================= */
+
+.faq-item {
+  margin: 0;
+
+  border: 1px solid rgba(99, 131, 113, 0.35);
+  border-radius: 9px;
+
+  background: rgba(20, 29, 24, 0.75);
+
+  overflow: hidden;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.faq-item:hover {
+  border-color: rgba(32, 232, 120, 0.45);
+}
+
+.faq-item[open] {
+  background: rgba(20, 29, 24, 0.9);
+  border-color: rgba(99, 131, 113, 0.45);
+}
+
+/* =========================
+   Pergunta
+========================= */
+
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 58px;
+  padding: 18px 16px;
+
+  cursor: pointer;
+  list-style: none;
+
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+
+  color: #ffffff;
+
+  user-select: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::marker {
+  display: none;
+}
+
+/* =========================
+   Ícone + / ×
+========================= */
+
+.faq-item summary span {
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 22px;
+  height: 22px;
+
+  margin-left: 20px;
+
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1;
+
+  color: #20e878;
+
+  transition: transform 0.25s ease;
+}
+
+.faq-item[open] summary span {
+  transform: rotate(45deg);
+}
+
+/* =========================
+   Resposta
+========================= */
+
+.faq-item > div {
+  padding: 0 16px 20px;
+}
+
+.faq-item > div p {
+  margin: 0 0 10px;
+
+  font-size: 14px;
+  line-height: 1.65;
+
+  color: #d4ddd8;
+}
+
+.faq-item > div p:last-child {
+  margin-bottom: 0;
+}
+
+/* =========================
+   Acessibilidade
+========================= */
+
+.faq-toggle:focus-visible,
+.faq-item summary:focus-visible {
+  outline: 2px solid #20e878;
+  outline-offset: 2px;
+}
+
+/* =========================
+   Tablet
+========================= */
+
+@media (max-width: 900px) {
+  .faq-section {
+    padding: 80px 0;
+  }
+
+  .faq-layout {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+
+  .faq-section .section-heading {
+    position: static;
+  }
+
+  .faq-section .section-heading p {
+    max-width: 600px;
+  }
+
+  .faq-toggle {
+    margin-top: 24px;
+  }
+
+  .faq-list {
+    max-width: 100%;
+  }
+}
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 600px) {
+  .faq-section {
+    padding: 65px 0;
+  }
+
+  .faq-layout {
+    gap: 35px;
+  }
+
+  .faq-section .section-heading h2 {
+    font-size: 42px;
+  }
+
+  .faq-section .section-heading p {
+    font-size: 15px;
+  }
+
+  .faq-toggle {
+    width: 100%;
+    max-width: 220px;
+  }
+
+  .faq-list {
+    gap: 8px;
+  }
+
+  .faq-item summary {
+    min-height: 55px;
+    padding: 16px 15px;
+
+    font-size: 13px;
+  }
+
+  .faq-item summary span {
+    margin-left: 12px;
+  }
+
+  .faq-item > div {
+    padding: 0 15px 18px;
+  }
+
+  .faq-item > div p {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+}
+
+/* =========================
+   PROFESSORES
+========================= */
+
+.professors-slider-container {
+  overflow: hidden;
+  padding-top: 1rem;
+}
+
+.professors-slider {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding-bottom: 0.5rem;
+}
+
+.professors-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.professors-slider .professor-card {
+  flex: 0 0 calc(25% - 1rem);
+  scroll-snap-align: start;
+}
+
+.slider-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+@media (max-width: 1024px) {
+  .professors-slider .professor-card {
+    flex: 0 0 calc(33.333% - 0.85rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .professors-slider .professor-card {
+    flex: 0 0 calc(50% - 0.65rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .professors-slider .professor-card {
+    flex: 0 0 85%;
+  }
+}
+
+.professor-card {
+  overflow: hidden;
+  border-radius: 1px;
+  background: #0f0e0e;
+  border:none;
+}
+
+.professor-card-image {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+}
+
+.professor-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.professor-card-body {
+  padding: 1.25rem;
+  
+}
+
+.professor-card-body p {
+  margin: 0 0 0.4rem;
+  color: #f0e9e9;
+}
+
+.professor-card-body h3 {
+  margin: 0;
+}

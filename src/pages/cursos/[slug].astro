@@ -114,10 +114,12 @@ const enrollmentUrl =
             </span>
 
             <h2>
-              Uma formação conectada aos desafios da sua área
+              Uma formação para ir além da base generalista
             </h2>
 
-            <p>{course.description}</p>
+            <p>{course.description2}</p>
+
+            <p>{course.description3}</p>
           </div>
 
           <div>
@@ -186,13 +188,11 @@ const enrollmentUrl =
               Experiência que aproxima teoria e prática
             </span>
 
-            <h2>Professores do curso</h2>
+            <h2>Quem conduz cada parte do caso</h2>
           </div>
 
           <p>
-            Conheça os profissionais que conduzirão os
-            encontros e compartilharão experiências aplicadas
-            à sua área.
+          A formação reúne professores e profissionais ligados às diferentes áreas do Direito Penal, Processo Penal e Tribunal do Júri.
           </p>
         </div>
 
@@ -277,7 +277,7 @@ const enrollmentUrl =
 
           <p>
             Converse com a nossa equipe para receber as
-            condições comerciais válidas para esta turma.
+            condições comerciais válidas caso esteja com dúvida.
           </p>
         </div>
 
@@ -297,23 +297,23 @@ const enrollmentUrl =
             aria-label="Informações incluídas na formação"
           >
             <li>
-              <span>Modalidade</span>
-              <strong>{course.modality}</strong>
+              <span>Valor Mensal:</span>
+              <strong style="text-align: justify; hyphens: auto;">14 mensalidades de R$459,99</strong>
             </li>
 
             <li>
-              <span>Carga horária</span>
-              <strong>{course.workload}</strong>
+              <span>Valor Total</span>
+              <strong>R$ 6.439,86</strong>
             </li>
 
             <li>
-              <span>Organização</span>
-              <strong>{course.modules}</strong>
+              <span>Quitação antecipada do semestre:</span>
+              <strong>5% de desconto no cartão de crédito, com parcelamento em até 10x sem juros.</strong>
             </li>
 
             <li>
-              <span>Trabalho de conclusão</span>
-              <strong>{course.tcc || 'Facultativo'}</strong>
+              <span>Pagamento à vista</span>
+              <strong>10% de desconto.</strong>
             </li>
           </ul>
 

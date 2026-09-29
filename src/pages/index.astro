@@ -3,9 +3,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
 import CourseCard from '../components/CourseCard.astro';
+import ProfessorCard from '../components/ProfessorCard.astro';
 import FAQ from '../components/FAQ.astro';
 import Footer from '../components/Footer.astro';
+
 import { courses } from '../data/courses';
+import { professors } from '../data/professors';
 ---
 
 <BaseLayout>
@@ -26,24 +29,50 @@ import { courses } from '../data/courses';
       </div>
     </section>
 
-    <section id="diferenciais" class="section faculty-highlight">
-      <div class="container faculty-layout">
-        <div class="faculty-image">
-          <img src="/images/courses/docentes.jpg" alt="Profissionais reunidos em ambiente de aprendizagem" width="900" height="700" loading="lazy" />
-        </div>
-        <div class="faculty-copy">
-          <span class="eyebrow">Aprenda com quem conecta teoria e prática</span>
-          <h2>Conhecimento que acontece dentro e fora da sala de aula</h2>
-          <p>Os programas foram desenhados para aproximar fundamentos sólidos, ferramentas atuais e desafios reais do mercado profissional.</p>
-          <ul class="check-list">
-            <li>Conteúdos organizados em módulos objetivos</li>
-            <li>Encontros presenciais em finais de semana alternados</li>
-            <li>Aplicação prática ao longo de toda a formação</li>
-          </ul>
-          <a class="button button--gold" href="#cursos">Explore os cursos</a>
-        </div>
+   <section id="diferenciais" class="section faculty-highlight">
+  <div class="container">
+
+    <div class="course-section-heading course-section-heading--light">
+      <div>
+        <span class="eyebrow">Corpo Docente de Excelência</span>
+
+        <h2>Aprenda com quem conecta teoria e prática</h2>
+
+        <p>
+          Conheça os especialistas e doutores que atuam no mercado
+          e lideram nossas aulas.
+        </p>
       </div>
-    </section>
+
+      <div class="slider-controls">
+        <button
+          id="prof-prev"
+          class="button button--outline-light button--small"
+          aria-label="Professor anterior"
+        style="cursor:pointer;">
+          ←
+        </button>
+
+        <button
+          id="prof-next"
+          class="button button--gold button--small"
+          aria-label="Próximo professor" style="cursor:pointer;"
+        >
+          →
+        </button>
+      </div>
+    </div>
+
+    <div class="professors-slider-container">
+      <div class="professors-slider" id="professors-slider">
+        {professors.map((professor) => (
+          <ProfessorCard {...professor} />
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>
 
     <FAQ />
 
@@ -59,3 +88,7 @@ import { courses } from '../data/courses';
   </main>
   <Footer />
 </BaseLayout>
+
+<script>
+  import '../scripts/professors-slider';
+</script>
