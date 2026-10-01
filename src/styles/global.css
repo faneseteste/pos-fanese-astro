@@ -226,12 +226,12 @@ button {
 }
 
 .hero-slide-background {
-  z-index: 0;
+z-index: 0;
   width: 100%;
   height: 100%;
   max-width: none;
   object-fit: cover;
-  object-position: center;
+  object-position: center; /* era: center */
   transform: scale(1.045);
   transition: transform 7s ease;
 }
@@ -800,7 +800,7 @@ button {
   width: 3.75rem;
   height: 3.75rem;
   padding: 0;
-  border: 3px solid rgba(255, 255, 255, .95);
+  border: 1px solid rgba(255, 255, 255, .95);
   border-radius: 50%;
   color: #07120c;
   background: #25d366;
@@ -1770,12 +1770,10 @@ button {
 /* Primeiro slide: imagem menor, proporcional e abaixo do cabeçalho */
 /* Primeiro slide: imagem ampla, proporcional e abaixo do cabeçalho */
 /* Primeiro slide: imagem ampla, proporcional e abaixo do cabeçalho */
-/* Enquadramento idêntico nos três slides */
+/* Enquadramento idêntico nos três slides: a imagem acompanha a altura do banner */
 @media (min-width: 901px) {
 
-  .hero .hero-slides>.hero-slide[data-slide="0"]>.hero-slide-background,
-  .hero .hero-slides>.hero-slide[data-slide="1"]>.hero-slide-background,
-  .hero .hero-slides>.hero-slide[data-slide="2"]>.hero-slide-background {
+  .hero .hero-slides>.hero-slide>.hero-slide-background {
     position: absolute !important;
 
     top: 5.25rem !important;
@@ -1783,25 +1781,18 @@ button {
     bottom: auto !important;
     left: auto !important;
 
-    width: 70% !important;
-    height: auto !important;
+    width: auto !important;
+    height: calc(100% - 5.25rem) !important;
     max-width: none !important;
 
     object-fit: contain !important;
-    object-position: right top !important;
+    object-position: right bottom !important;
 
     transform: none !important;
     transition: none !important;
 
-    -webkit-mask-image: linear-gradient(to right,
-        transparent 0%,
-        #000 18%,
-        #000 100%);
-
-    mask-image: linear-gradient(to right,
-        transparent 0%,
-        #000 18%,
-        #000 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 30%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 30%);
   }
 }
 
@@ -2265,4 +2256,13 @@ button {
 
 .professor-card-body h3 {
   margin: 0;
+}
+@media (min-width: 901px) {
+  .hero-content {
+    padding-bottom: clamp(4rem, 7vw, 9rem);
+  }
+
+  .hero h1 {
+    max-width: 46rem; /* o título quebra antes de chegar na cabeça dela */
+  }
 }
