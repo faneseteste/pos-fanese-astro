@@ -81,4 +81,5 @@ export const courses: Course[] = [
       'Comunicação jurídica: Oratória, retórica, argumentação e persuasão conectadas à técnica e à leitura do caso.',
     ],
   },
+
 ];

@@ -51,24 +51,30 @@ import { faqItems } from '../data/faq';
 </section>
 
 <script>
+  const faqSection = document.querySelector('.faq-section');
   const toggle = document.querySelector('.faq-toggle');
   const faqList = document.querySelector('#faq-list');
 
   toggle?.addEventListener('click', () => {
     const isOpen = toggle.getAttribute('aria-expanded') === 'true';
 
-    toggle.setAttribute('aria-expanded', String(!isOpen));
-    faqList?.setAttribute('aria-hidden', String(isOpen));
+    const newState = !isOpen;
+
+    toggle.setAttribute('aria-expanded', String(newState));
+    faqList?.setAttribute('aria-hidden', String(!newState));
+
+    // Adiciona/remove a classe que controla o layout
+    faqSection?.classList.toggle('faq-open', newState);
 
     const text = toggle.querySelector('.faq-toggle-text');
     const icon = toggle.querySelector('.faq-toggle-icon');
 
     if (text) {
-      text.textContent = isOpen ? 'Ler FAQ' : 'Ocultar FAQ';
+      text.textContent = newState ? 'Ocultar FAQ' : 'Ler FAQ';
     }
 
     if (icon) {
-      icon.textContent = isOpen ? '+' : '−';
+      icon.textContent = newState ? '−' : '+';
     }
   });
 </script>

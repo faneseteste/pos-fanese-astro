@@ -433,11 +433,12 @@ button {
 }
 
 .course-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 24rem));
+  display: flex;
   justify-content: center;
-  gap: 1.4rem;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
+
 
 .course-card {
   display: flex;
@@ -449,6 +450,8 @@ button {
   background: var(--white);
   box-shadow: 0 .6rem 2rem rgba(5, 18, 37, .06);
   transition: transform .25s ease, box-shadow .25s ease;
+    width: 400px;
+  max-width: 100%;
 }
 
 .course-card:hover {
@@ -655,12 +658,7 @@ button {
   background: var(--navy-900);
 }
 
-.faq-layout {
-  display: grid;
-  grid-template-columns: .72fr 1.28fr;
-  gap: 5rem;
-  align-items: start;
-}
+
 
 .section-heading--light h2 {
   color: var(--white);
@@ -670,10 +668,6 @@ button {
   color: #b9c5bd;
 }
 
-.faq-list {
-  display: grid;
-  gap: .75rem;
-}
 
 .faq-item {
   overflow: hidden;
@@ -1821,9 +1815,10 @@ button {
 }
 
 .faq-layout {
-  display: grid;
-  grid-template-columns: minmax(280px, 0.8fr) minmax(500px, 1.2fr);
-  gap: 80px;
+ display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  gap: 0;
   align-items: start;
 }
 
@@ -1832,8 +1827,10 @@ button {
 ========================= */
 
 .faq-section .section-heading {
-  position: sticky;
-  top: 100px;
+ position: static;
+  max-width: 700px;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .faq-section .eyebrow {
@@ -1861,8 +1858,9 @@ button {
 }
 
 .faq-section .section-heading p {
-  max-width: 390px;
-  margin: 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 
   font-size: 16px;
   line-height: 1.6;
@@ -1931,16 +1929,14 @@ button {
 ========================= */
 
 .faq-list {
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 9px;
 
+  width: 100%;
   max-width: 900px;
 
   margin-top: 0;
-
-  /* Escondida inicialmente */
-  display: none;
 }
 
 /* Lista aberta */
@@ -2083,12 +2079,19 @@ button {
     gap: 45px;
   }
 
-  .faq-section .section-heading {
+  .faq-section .section-heading,
+  .faq-section.faq-open .section-heading {
     position: static;
+    max-width: 600px;
+    text-align: center;
+    margin: 0 auto;
   }
 
-  .faq-section .section-heading p {
+  .faq-section .section-heading p,
+  .faq-section.faq-open .section-heading p {
     max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .faq-toggle {
@@ -2149,6 +2152,35 @@ button {
     font-size: 13px;
     line-height: 1.6;
   }
+}
+
+/* =========================
+   FAQ ABERTO
+========================= */
+
+.faq-section.faq-open .faq-layout {
+  grid-template-columns: minmax(280px, 0.8fr) minmax(500px, 1.2fr);
+  gap: 80px;
+  justify-items: stretch;
+  align-items: start;
+}
+
+.faq-section.faq-open .section-heading {
+  position: sticky;
+  top: 100px;
+  max-width: none;
+  margin: 0;
+  text-align: left;
+}
+
+.faq-section.faq-open .section-heading p {
+  max-width: 390px;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.faq-section.faq-open .faq-list {
+  width: 100%;
 }
 
 /* =========================

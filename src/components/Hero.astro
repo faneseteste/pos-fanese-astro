@@ -40,16 +40,23 @@ import { courses } from '../data/courses';
             <div><span>Início previsto</span><strong>13 nov. 2026</strong></div>
             <div><span>Organização</span><strong>30 módulos</strong></div>
           </div>
-          <div class="hero-controls" aria-label="Controles do banner">
+         
+  <!-- Aqui fica botão para deslizamento de futuros slides de
+        <div class="hero-controls" aria-label="Controles do banner">
             {courses.map((item, dotIndex) => (
+              
               <button
                 class:list={['hero-dot', { 'is-active': dotIndex === index }]}
                 type="button"
                 data-slide-to={dotIndex}
                 aria-label={`Exibir ${item.shortName}`}
               ></button>
-            ))}
+            )) 
+            }
           </div>
+        --!>  
+
+
         </div>
       </article>
     ))}

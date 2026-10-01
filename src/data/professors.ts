@@ -1,9 +1,5 @@
 export const professors = [
-  {
-    name: "Ana Carolina Santana",
-    role: "Graduada e Mestra em Direito pela Universidade Federal de Sergipe. Foi Delegada de Polícia do Estado de Minas Gerais e é Juíza de Direito desde 2016.",
-    image: "/images/professors/anacarol.png",
-  },
+  
   {
     name: "Daniel Souza Faria Lustosa",
     role: "Bacharel em Direito pela Universidade de Fortaleza e Especialista em Tribunal do Júri. Defensor Público do Estado de Sergipe desde 2015, com atuação no Tribunal do Júri.",
@@ -33,6 +29,11 @@ export const professors = [
     name: "Prof. Sandro Luiz da Costa",
     role: "Doutor e Mestre em Desenvolvimento e Meio Ambiente pela Universidade Federal de Sergipe. Professor de graduação e pós-graduação em Direito na FANESE e na Faculdade 8 de Julho.",
     image: "/images/professors/sandro.png",
+  },
+  {
+    name: "Ana Carolina Santana",
+    role: "Graduada e Mestra em Direito pela Universidade Federal de Sergipe. Foi Delegada de Polícia do Estado de Minas Gerais e é Juíza de Direito desde 2016.",
+    image: "/images/professors/anacarol.png",
   },
 
   // ...
